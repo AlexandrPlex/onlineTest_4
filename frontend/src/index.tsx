@@ -15,9 +15,6 @@ if (isProduction) {
   OfflinePluginRuntime.install();
 }
 
-// To keep reducers self-sufficient and reusable, we choose to not set
-// initial state here, and let each reducer to handle the default state
-// https://github.com/reactjs/redux/issues/1189#issuecomment-168025590
 const initialState = {};
 
 // Create browser history

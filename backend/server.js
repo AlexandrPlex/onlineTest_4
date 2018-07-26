@@ -1,3 +1,4 @@
+/* eslint-disable import/first,import/extensions */
 import express from 'express';
 import path from 'path';
 import logger from 'morgan';
@@ -6,8 +7,10 @@ import bodyParser from 'body-parser';
 import compression from 'compression';
 import helmet from 'helmet';
 import session from 'express-session';
-import connectRedis from 'connect-redis';
+import MySQLStore from 'express-mysql-session';
 import 'colors';
+import passport from 'passport';
+import './passport';
 
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
@@ -17,7 +20,18 @@ import webpackConfig from '../webpack.config.dev.babel';
 import config from './config.json';
 import indexRtr from './routes/index';
 
-const RedisStore = connectRedis(session);
+
+const options = {
+  host: config.mysql.host,
+  port: config.mysql.port,
+  user: config.mysql.user,
+  password: config.mysql.password,
+  database: config.mysql.database,
+};
+
+const sessionStore = new MySQLStore(options);
+
+
 const isProduction = process.env.NODE_ENV === 'production';
 const port = process.env.PORT || config.http_port;
 const app = express();
@@ -41,18 +55,30 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(session({
-  store: new RedisStore({
-    host: isProduction ? config.redis_hostname_prod : config.redis_hostname_dev,
-    port: config.redis_port,
-  }),
-  secret: 'keyboard cat',
+  store: sessionStore,
+  secret: config.session.secret,
   saveUninitialized: false,
   resave: false,
   cookie: {
+    maxAge: 24 * 60 * 60 * 1000,
     httpOnly: !isProduction,
     secure: isProduction,
   },
 }));
+
+// api passport
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
+
+passport.deserializeUser((user, done) => {
+  done(null, user);
+});
 
 // api router
 app.use('/api', indexRtr);

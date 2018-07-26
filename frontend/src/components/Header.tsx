@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { Dropdown } from 'components/Dropdown';
-
 interface IHeaderProps {
   dropdownLists: string[];
 }
@@ -20,7 +18,6 @@ export class Header extends React.Component<IHeaderProps> {
                 <a className='dropdown-button' href='#' data-target='header-dropdown'>Dropdown</a>
               </li>
               <li key='404'><NavLink activeClassName='active-link' to='/404'>NotFound</NavLink></li>
-              <Dropdown id='header-dropdown' dropdownLists={this.props.dropdownLists} />
             </ul>
           </div>
         </div>
