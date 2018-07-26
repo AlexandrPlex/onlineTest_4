@@ -9,10 +9,6 @@ import { DevTools } from 'containers/DevTools';
 import { router } from 'router';
 import { isProduction } from 'utils';
 
-import 'materialize-css';
-import 'prismjs/prism.js';
-import 'prismjs/themes/prism.css';
-
 interface IAppProps {
   store: Store<any>;
   history: History;

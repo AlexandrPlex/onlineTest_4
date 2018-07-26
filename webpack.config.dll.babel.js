@@ -22,9 +22,6 @@ const immutableVendors = [
   'immutable',
 ];
 
-const materializeVendors = [
-  'materialize-css',
-];
 
 // Base config
 const config = {
@@ -38,7 +35,6 @@ const config = {
   entry: {
     react: reactVendors,
     immutable: immutableVendors,
-    materialize: materializeVendors,
   },
 
   // Affecting the output of the compilation

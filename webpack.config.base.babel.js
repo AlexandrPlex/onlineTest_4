@@ -12,7 +12,6 @@ import WebpackPwaManifest from 'webpack-pwa-manifest';
 
 const ReactManifest = './frontend/dist/dll/react_manifest.json';
 const ImmutableManifest = './frontend/dist/dll/immutable_manifest.json';
-const MaterializeManifest = './frontend/dist/dll/materialize_manifest.json';
 const devMode = process.env.NODE_ENV !== 'production';
 
 export default {
@@ -119,7 +118,6 @@ export default {
     // Load pre-build dll reference files
     new webpack.DllReferencePlugin({ manifest: ReactManifest }),
     new webpack.DllReferencePlugin({ manifest: ImmutableManifest }),
-    new webpack.DllReferencePlugin({ manifest: MaterializeManifest }),
     // Extract css part from javascript bundle into separated file
     new MiniCssExtractPlugin({
       filename: devMode ? '[name].css' : '[name].[contenthash:10].css',
