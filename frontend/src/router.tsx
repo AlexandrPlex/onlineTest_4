@@ -8,7 +8,7 @@ import { HomePage } from 'pages/HomePage';
 import { NotFoundPage } from 'pages/NotFoundPage';
 
 export const router = (
-  <div>
+  <div className='wrapper'>
     <Header dropdownLists={['parallax']} />
     <Switch>
       <Route exact path='/' component={HomePage} />

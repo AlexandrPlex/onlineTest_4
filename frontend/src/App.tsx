@@ -9,6 +9,8 @@ import { DevTools } from 'containers/DevTools';
 import { router } from 'router';
 import { isProduction } from 'utils';
 
+import './css/index.css';
+
 interface IAppProps {
   store: Store<any>;
   history: History;
