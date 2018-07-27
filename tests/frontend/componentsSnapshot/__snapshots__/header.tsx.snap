@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[SnapShot] Header test Auth false 1`] = `
+<header>
+  <nav>
+    <span>
+      Online tester
+    </span>
+    <ul>
+      <li>
+        <a
+          href="#"
+        >
+          Главная
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+        >
+          Войти
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+`;
+
+exports[`[SnapShot] Header test Auth true 1`] = `
+<header>
+  <nav>
+    <span>
+      Online tester
+    </span>
+    <ul>
+      <li>
+        <a
+          href="#"
+        >
+          Главная
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+        >
+          Выйти
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+`;

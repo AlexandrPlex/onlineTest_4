@@ -8,6 +8,7 @@ export default merge(BaseWebpackConfig, {
   // The point or points to enter the application.
   entry: {
     app: [
+      'babel-polyfill',
       'webpack-hot-middleware/client',
       './frontend/src/index',
     ],
