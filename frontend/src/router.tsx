@@ -12,6 +12,10 @@ export const router = (
     <ContainerHeader />
     <Switch>
       <Route exact path='/' component={HomePage} />
+      <Route path='/login' component={HomePage} />
+      <Route path='/student' component={HomePage} />
+      <Route path='/admin' component={HomePage} />
+      <Route path='/teacher' component={HomePage} />
       <Route component={NotFoundPage} />
     </Switch>
     <Footer />

@@ -4,21 +4,20 @@ export interface IHeaderProps {
   authState: boolean;
 }
 
-export class Header extends React.Component<IHeaderProps> {
+export class Header extends React.PureComponent<IHeaderProps> {
   public render() {
     return (
       <header>
         <nav>
-        <span>Online tester</span>
-          <ul>
-            <li><a href='#'>Главная</a></li>
+        <span><a href='#'>Online tester</a></span>
             {
               this.props.authState ?
-              <li><a href='#'>Выйти</a></li>
+              <ul>
+                <li><a href='#'>Выйти</a></li>
+              </ul>
               :
-              <li><a href='#'>Войти</a></li>
+              null
             }
-          </ul>
         </nav>
       </header>
     );

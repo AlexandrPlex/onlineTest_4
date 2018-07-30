@@ -19,10 +19,10 @@ interface IAppProps {
 export const App = (props: IAppProps) => (
   <Provider store={props.store}>
     <ConnectedRouter history={props.history}>
-      <div>
+      <React.Fragment>
         {router}
         {!isProduction && <DevTools />}
-      </div>
+      </React.Fragment>
     </ConnectedRouter>
   </Provider>
 );
