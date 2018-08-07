@@ -1,5 +1,5 @@
 // import {initialState} from 'reducers/commonReducer';
-import * as action from '../../../frontend/src/actions/authActions';
+import * as actions from '../../../frontend/src/actions/authActions';
 import {asyncConstant} from '../../../frontend/src/constant/asyncConstant';
 import {commonConstant} from '../../../frontend/src/constant/commonConstant';
 
@@ -8,17 +8,31 @@ import thunk from 'redux-thunk';
 
 import fetchMock from 'fetch-mock';
 import { initialState } from 'reducers/commonReducer';
-
+​
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
-
-describe('sync ducks', () => {
-  it('setLoading()', () => {
-    const state = {initialState};
-    const store = mockStore(() => state);
-    store.dispatch(action.login('ds', 'ds'));
-    const actions = store.getActions().map(({ type, payload }) => ({ type, payload }));
-    console.log(actions);
-    // ...остальной код отсюда - далее по тексту
+​
+describe('async actions', () => {
+  afterEach(() => {
+    fetchMock.reset();
+    fetchMock.restore();
+  });
+​
+  it('creates FETCH_TODOS_SUCCESS when fetching todos has been done', () => {
+    fetchMock
+      // tslint:disable-next-line:semicolon
+      .getOnce('/auth', { body: { auth: false }});
+​
+​
+    const expectedActions = [
+      { type: `${commonConstant.REQUES_FOR_AUTH}${asyncConstant.BEGIN}` },
+      { type: `${commonConstant.REQUES_FOR_AUTH}${asyncConstant.FAILURE}`},
+    ];
+    const store = mockStore({ commomReducer: initialState });
+​   console.log(typeof actions.login('a', 'f'));
+    return store.dispatch(actions.login('', '').then(() => {
+      // return of async actions
+      expect(store.getActions()).toEqual(expectedActions);
+    }));
   });
 });
