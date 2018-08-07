@@ -4,7 +4,7 @@ export class HomePage extends React.Component {
   public render() {
     return (
         <main>
-          <ContainerAuth/>
+          <ContainerAuth {...this.props}/>
         </main>
     );
   }

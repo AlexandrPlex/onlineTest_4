@@ -1,15 +1,11 @@
 import * as hash from 'object-hash';
 import * as React from 'react';
 
-export interface IAuthProps {
-  authState: boolean;
-}
-
 export interface IAuthDispatch {
-    login: (email: string, password: string) => Promise<any>;
+    login: (email: string, password: string) => any;
 }
 
-export class Auth extends React.Component<IAuthProps & IAuthDispatch> {
+export class Auth extends React.Component<IAuthDispatch> {
     public state = {
         emailValue: '',
         passwordValue: '',
@@ -20,13 +16,14 @@ export class Auth extends React.Component<IAuthProps & IAuthDispatch> {
         this.setState(state);
     }
     public onHandleSubmit = () => {
-        alert(this.props.login(this.state.emailValue, this.state.passwordValue));
+        console.log(this.state);
+        this.props.login(this.state.emailValue, this.state.passwordValue);
     }
     public render() {
         return (
             <React.Fragment>
                 <form onSubmit={ (e: React.FormEvent<HTMLFormElement>) => { e.preventDefault(); } }>
-                    <input onChange={this.onChangeInput} type='text' name='loginValue' placeholder='user name' />
+                    <input onChange={this.onChangeInput} type='text' name='emailValue' placeholder='user name' />
                     <input onChange={this.onChangeInput} type='password' name='passwordValue' placeholder='password' />
                     <input onClick={this.onHandleSubmit} type='submit' name='submit'/>
                 </form>

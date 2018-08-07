@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[SnapShot] Auth test  - Auth 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <input
+    name="emailValue"
+    onChange={[Function]}
+    placeholder="user name"
+    type="text"
+  />
+  <input
+    name="passwordValue"
+    onChange={[Function]}
+    placeholder="password"
+    type="password"
+  />
+  <input
+    name="submit"
+    onClick={[Function]}
+    type="submit"
+  />
+</form>
+`;

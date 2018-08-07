@@ -2,16 +2,14 @@ import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
 
 import * as actions from 'actions/authActions';
-import {Auth, IAuthDispatch, IAuthProps} from 'components/Auth';
-import {IAppState} from '../types';
+import {Auth, IAuthDispatch} from 'components/Auth';
+import {IAppState} from 'types';
 
-const mapStateToProps = (state: IAppState): IAuthProps => ({
-    authState: state.commonReducer.authState,
-});
+const mapStateToProps = (state: IAppState): IAppState => state;
 
 const mapDispatchToProps = (dispatch: Dispatch): IAuthDispatch => ({
-    login: async (/*email: string, password: string*/) => {
-        await dispatch(actions.login(/*email, password*/));
+    login: (email: string, password: string) => {
+         dispatch(actions.login(email, password));
     },
 });
 

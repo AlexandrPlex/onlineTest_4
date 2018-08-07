@@ -72,7 +72,7 @@ export default {
         test: /\.css$/,
         use: [
           devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-          { loader: 'css-loader', options: { sourceMap: false, importLoaders: 1 } }, // TODO: enable sourceMap without FOUC
+          { loader: 'css-loader', options: { sourceMap: true, importLoaders: 1 } }, // TODO: enable sourceMap without FOUC
           { loader: 'postcss-loader', options: { sourceMap: true, plugins: () => [postcssImport, postcssCssnext] } },
         ],
       },

@@ -10,3 +10,6 @@ main {
 body{
 	margin: 0;
 }
+:local(.foo) {
+    color: aliceblue;
+}
